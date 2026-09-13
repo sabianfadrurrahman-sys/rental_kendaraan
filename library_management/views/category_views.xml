@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_library_category_list" model="ir.ui.view">
+        <field name="name">library.category.list</field>
+        <field name="model">library.category</field>
+        <field name="arch" type="xml">
+            <list string="Categories">
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_library_category_form" model="ir.ui.view">
+        <field name="name">library.category.form</field>
+        <field name="model">library.category</field>
+        <field name="arch" type="xml">
+            <form string="Category">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <!-- Menampilkan daftar buku yang termasuk dalam kategori ini -->
+                    <notebook>
+                        <page string="Daftar Buku">
+                            <field name="book_ids">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="author_id"/>
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_library_publisher_list" model="ir.ui.view">
+        <field name="name">library.publisher.list</field>
+        <field name="model">library.publisher</field>
+        <field name="arch" type="xml">
+            <list string="Publishers">
+                <field name="name"/> 
+                <field name="publisher_code"/>
+                <field name="website"/>
+                <field name="rating" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_library_publisher_form" model="ir.ui.view">
+        <field name="name">library.publisher.form</field>
+        <field name="model">library.publisher</field>
+        <field name="arch" type="xml">
+            <form string="Publisher">
+                <sheet>
+                    <group>
+                        <group string="Data Partner">
+                            <field name="name"/> 
+                            <field name="email"/> 
+                            <field name="phone"/> 
+                        </group>
+                        <group string="Detail Penerbit">
+                            <field name="publisher_code"/>
+                            <field name="established_year"/>
+                            <field name="website" widget="url"/>
+                            <field name="rating"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_library_publisher" model="ir.actions.act_window">
+        <field name="name">Publishers</field>
+        <field name="res_model">library.publisher</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

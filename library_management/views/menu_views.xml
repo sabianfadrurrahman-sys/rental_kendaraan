@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- 1. ROOT MENU (Menu Utama Sidebar) -->
+    <menuitem id="menu_library_root" 
+              name="Perpustakaan" 
+              sequence="10" 
+              groups="library_management.group_library_user"/>
+
+    <!-- 2. WINDOW ACTIONS -->
+    <record id="action_library_book" model="ir.actions.act_window">
+        <field name="name">Books</field>
+        <field name="res_model">library.book</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Belum ada buku di perpustakaan.
+            </p>
+            <p>
+                Tambahkan buku baru dengan klik tombol "New" atau "Create".
+            </p>
+        </field>
+    </record>
+
+    <record id="action_library_borrow" model="ir.actions.act_window">
+        <field name="name">Transaksi Peminjaman</field>
+        <field name="res_model">library.borrow</field>
+        <field name="view_mode">list,form,calendar,pivot,graph</field>
+    </record>
+
+    <record id="action_library_author" model="ir.actions.act_window">
+        <field name="name">Penulis</field>
+        <field name="res_model">library.author</field>
+        <field name="view_mode">list,form</field> 
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Belum ada data penulis. Yuk tambahkan penulis pertama!
+            </p>
+        </field>
+    </record>
+
+    <record id="action_library_publisher" model="ir.actions.act_window">
+        <field name="name">Publishers</field>
+        <field name="res_model">library.publisher</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_library_member" model="ir.actions.act_window">
+        <field name="name">Members</field>
+        <field name="res_model">library.member</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_book_copies" model="ir.actions.act_window">
+        <field name="name">Eksemplar Buku</field>
+        <field name="res_model">book.copies</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_library_category" model="ir.actions.act_window">
+        <field name="name">Book Categories</field>
+        <field name="res_model">library.category</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- 3. SUB MENUS (Diurutkan Berdasarkan Sequence) -->
+    <menuitem id="menu_library_book" 
+              name="Books" 
+              parent="menu_library_root" 
+              action="action_library_book" 
+              sequence="10"/>
+
+    <menuitem id="menu_library_borrow" 
+              name="Peminjaman" 
+              parent="menu_library_root" 
+              action="action_library_borrow" 
+              sequence="15"/>
+
+    <menuitem id="menu_library_author" 
+              name="Authors" 
+              parent="menu_library_root" 
+              action="action_library_author" 
+              sequence="20"/>
+
+    <menuitem id="menu_library_publisher" 
+              name="Publishers" 
+              parent="menu_library_root" 
+              action="action_library_publisher" 
+              sequence="25"/>
+
+    <menuitem id="menu_library_member" 
+              name="Members" 
+              parent="menu_library_root" 
+              action="action_library_member" 
+              sequence="30"/>
+
+    <menuitem id="menu_book_copies" 
+              name="Eksemplar" 
+              parent="menu_library_root" 
+              action="action_book_copies" 
+              sequence="40"/>
+
+    <menuitem id="menu_library_category" 
+              name="Categories" 
+              parent="menu_library_root" 
+              action="action_library_category" 
+              sequence="50"/>
+</odoo>

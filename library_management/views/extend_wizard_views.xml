@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View Wizard -->
+    <record id="view_library_extend_wizard_form" model="ir.ui.view">
+        <field name="name">library.extend.wizard.form</field>
+        <field name="model">library.extend.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Perpanjang Peminjaman">
+                <group>
+                    <field name="additional_days"/>
+                </group>
+                <footer>
+                    <button name="action_confirm_extend" string="Konfirmasi Perpanjangan" type="object" class="btn-primary"/>
+                    <button string="Batal" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Window Action (target="new" wajib agar jadi pop-up modal) -->
+    <record id="action_library_extend_wizard" model="ir.actions.act_window">
+        <field name="name">Perpanjang Peminjaman</field>
+        <field name="res_model">library.extend.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

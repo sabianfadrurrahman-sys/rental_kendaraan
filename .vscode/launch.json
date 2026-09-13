@@ -1,0 +1,23 @@
+// -- ------------------------------------
+// -- Perhatian
+// -- Khusus untuk Windows User : 
+// -- hasil dari Copy Path harus diganti dengan double-backslash \\
+// -- ------------------------------------
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Odoo 18",
+            "type": "debugpy",
+            "python": "python12",
+            "request": "launch",
+            "program": "D:\\Odoo Development\\Odoo\\server\\odoo-bin",
+            "args": [
+                "-c",
+                "D:\\Odoo Development\\conf\\odoo_training.conf"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false 
+        }
+    ]
+}

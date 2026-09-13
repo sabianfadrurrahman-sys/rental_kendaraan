@@ -1,0 +1,18 @@
+<odoo>
+    <!-- Rule: User hanya bisa lihat borrow yang dia buat -->
+    <record id="library_borrow_rule_user_own" model="ir.rule">
+        <field name="name">Library Borrow: User can see own records</field>
+        <field name="model_id" ref="model_library_borrow"/>
+        <field name="groups" eval="[(4, ref('library_management.group_library_user'))]"/>
+        <field name="domain_force">[('create_uid', '=', user.id)]</field>
+    </record>
+
+    <!-- Rule: Admin bisa lihat semua -->
+    <record id="library_borrow_rule_admin_all" model="ir.rule">
+        <field name="name">Library Borrow: Admin can see all</field>
+        <field name="model_id" ref="model_library_borrow"/>
+        <field name="groups" eval="[(4, ref('library_management.group_library_manager'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
+</odoo> 
+

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_library_borrow_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.basic_layout">
+                    <div class="page">
+                        
+                        <!-- ==================== CUSTOM KOP SURAT (HEADER) ==================== -->
+                        <div class="row align-items-center" style="border-bottom: 3px solid #2c3e50; padding-bottom: 10px; margin-top: 20px; margin-bottom: 30px;">
+                            <div class="col-3">
+                                <img src="/library_management/static/img/logo.png" style="max-height: 85px;" alt="Logo Perpustakaan"/>
+                            </div>
+                            <div class="col-9 text-end">
+                                <h2 style="color: #2c3e50; font-weight: bold; margin-bottom: 0;">Perpustakaan Digital</h2>
+                                <p style="margin-bottom: 0; font-size: 15px;"><i>Jl. Gegerkalong Hilir, Ds. Ciwaruga, Bandung</i></p>
+                                <p style="margin-bottom: 0; font-size: 13px; color: #7f8c8d;">Telp: (022) 2013789 | Email: layanan@perpustakaan.ac.id</p>
+                            </div>
+                        </div>
+                        <!-- =================================================================== -->
+
+                        <h3 class="text-center mt-4 mb-4" style="background-color: #f8f9fa; padding: 10px; border-radius: 5px;">
+                            <strong>BUKTI PEMINJAMAN BUKU</strong>
+                        </h3>
+                        
+                        <div class="row mb-4 mt-4">
+                            <div class="col-6">
+                                <p><strong>Nama Anggota :</strong> <span t-field="doc.membership_id.name"/></p>
+                                <p><strong>Kode Anggota :</strong> <span t-field="doc.membership_id.membership_code"/></p>
+                                <p><strong>Status Trx   :</strong> <span t-field="doc.state"/></p>
+                            </div>
+                            <div class="col-6 text-end">
+                                <p><strong>Tgl Pinjam :</strong> <span t-field="doc.datetime_from"/></p>
+                                <p><strong>Tgl Kembali:</strong> <span t-field="doc.datetime_to"/></p>
+                            </div>
+                        </div>
+
+                        <table class="table table-sm table-bordered mt-4">
+                            <thead class="table-dark">
+                                <tr class="text-center">
+                                    <th>Kode Buku</th>
+                                    <th>Judul Buku</th>
+                                    <th>Penulis</th>
+                                    <th>Durasi (Hari)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center"><span t-field="doc.book_id.code"/></td>
+                                    <td><span t-field="doc.book_id.name"/></td>
+                                    <td><span t-field="doc.book_id.author_id.name"/></td>
+                                    <td class="text-center"><span t-field="doc.duration"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div t-if="doc.fine > 0" class="alert alert-danger mt-4 text-center">
+                            <strong>Perhatian!</strong> Terdapat denda keterlambatan sebesar: <span t-field="doc.fine"/>
+                        </div>
+
+                        <!-- Tanda Tangan -->
+                        <div class="row mt-5">
+                            <div class="col-4 offset-8 text-center">
+                                <p>Petugas Perpustakaan,</p>
+                                <br/><br/><br/>
+                                <p><strong>( .................................... )</strong></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

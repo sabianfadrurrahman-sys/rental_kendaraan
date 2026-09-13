@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_library_borrow" model="ir.actions.report">
+        <field name="name">Cetak Bukti Peminjaman</field>
+        <field name="model">library.borrow</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">library_management.report_library_borrow_document</field>
+        <field name="report_file">library_management.report_library_borrow_document</field>
+        <field name="paperformat_id" ref="library_management.paperformat_library_custom"/>
+        <field name="print_report_name">'Bukti Peminjaman - %s' % (object.membership_id.name)</field>
+        <field name="binding_model_id" ref="model_library_borrow"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- <record id="action_report_library_borrow_xlsx" model="ir.actions.report">
+        <field name="name">Cetak Bukti Peminjaman (Excel)</field>
+        <field name="model">library.borrow</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">library_management.report_library_borrow_xlsx</field>
+        <field name="report_file">Bukti_Peminjaman</field>
+        <field name="print_report_name">'Bukti Peminjaman Excel - %s' % (object.membership_id.name)</field>
+        <field name="binding_model_id" ref="model_library_borrow"/>
+        <field name="binding_type">report</field>
+    </record> -->
+</odoo>
