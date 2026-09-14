@@ -38,3 +38,27 @@ class RentalVehicle(models.Model):
     def _compute_order_count(self):
         for record in self:
             record.order_count = len(record.order_ids)
+
+    _sql_constraints = [
+        ('license_plate_uniq', 'unique(license_plate, company_id)', 'License plate must be unique!'),
+    ]
+
+    @api.constrains('daily_rate')
+    def _check_daily_rate(self):
+        for record in self:
+            if record.daily_rate <= 0:
+                raise models.ValidationError('Daily rate harus > 0.')
+
+    @api.constrains('seat_count')
+    def _check_seat_count(self):
+        for record in self:
+            if record.seat_count < 1:
+                raise models.ValidationError('Seat count harus >= 1.')
+
+    @api.constrains('model_year')
+    def _check_model_year(self):
+        import datetime
+        current_year = datetime.datetime.now().year
+        for record in self:
+            if record.model_year and (record.model_year < 1990 or record.model_year > current_year + 1):
+                raise models.ValidationError('Model year harus antara 1990 dan tahun berjalan + 1.')
