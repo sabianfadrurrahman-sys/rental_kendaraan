@@ -2,34 +2,30 @@
 {
     'name': "nti_vehicle_rental",
 
-    'summary': "Short (1 phrase/line) summary of the module's purpose",
+    'summary': "Module for managing vehicle rentals",
 
     'description': """
-Long description of module's purpose
+        Module for managing vehicle rentals and rental orders.
     """,
 
     'author': "My Company",
     'website': "https://www.yourcompany.com",
 
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list
     'category': 'Uncategorized',
     'version': '0.1',
 
-    # any module necessary for this one to work correctly
-    'depends': ['base'],
+    # Modul pendukung (ditambahkan 'mail' agar mail.thread tidak error)
+    'depends': ['base', 'mail'],
 
-    # always loaded
+    # File data dan views yang dimuat
     'data': [
         'security/ir.model.access.csv',
+        'data/ir_sequence_data.xml',
         'views/views.xml',
         'views/templates.xml',
     ],
-    # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
-	'licence': 'OPL-1',
+    'license': 'OPL-1',
 }
-
