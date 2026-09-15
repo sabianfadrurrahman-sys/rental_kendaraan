@@ -7,4 +7,3 @@ class RentalOrder(models.Model):
     _rec_name = 'name'
 
     name = fields.Char(string='Order Reference', required=True, copy=False, readonly=True, default=lambda self: 'New')
-    
