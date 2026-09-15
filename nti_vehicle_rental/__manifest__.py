@@ -20,7 +20,7 @@
     # File data dan views yang dimuat
     'data': [
         'security/ir.model.access.csv',
-        'data/ir_sequence.xml',
+        'data/ir.sequence.xml',
         'views/views.xml',
         'views/templates.xml',
     ],
