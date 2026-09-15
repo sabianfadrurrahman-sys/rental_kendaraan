@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="seq_rental_order" model="ir.sequence">
-        <name>Rental Order Sequence</name>
-        <code >rental.order</code>
-        <prefix>RNT/%(year)s/</prefix>
-        <padding>5</padding>
-        <company_id eval="False"/>
-    </record>
+    <data noupdate="1">
+        <record id="seq_rental_order" model="ir.sequence">
+            <field name="name">Rental Order Sequence</field>
+            <field name="code">rental.order</field>
+            <field name="prefix">RNT/%(year)s/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
 </odoo>
