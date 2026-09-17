@@ -19,5 +19,5 @@
     'demo': [
         'demo/demo.xml',
     ],
-    'license': 'OPL-1',
+    'license': 'OPL-1'
 }

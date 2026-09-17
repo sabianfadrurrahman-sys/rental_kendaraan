@@ -29,7 +29,7 @@ class RentalVehicle(models.Model):
     ], string='Status', default='available', tracking=True)
 
     note = fields.Text(string='Note')
-    active = fields.BooleanField(string='Active', default=True)
+    active = fields.Boolean(string='Active', default=True)
     image_1920 = fields.Image(string='Image')
 
     order_ids = fields.One2many('rental.order', 'vehicle_id', string='Rental Orders')
