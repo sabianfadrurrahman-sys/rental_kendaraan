@@ -1,83 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <data>
- <record id="rental_vehicle_view_form" model="ir.ui.view">
-  <field name="name">rental.vehicle.view.form</field>
-  <field name="model">rental.vehicle</field>
-  <field name="arch" type="xml">
-    <form string="">
-      <sheet>
-        <group>
-          <field name="name"/>
-          <field name="license_plate"/>
-          <field name="name"/>
-          <field name="name"/>
-        </group>
-      </sheet>
-    </form>
-  </field>
- </record>
 
-<record id="rental_vehicle_action" model="ir.actions.act_window">
-  <field name="name">Rental vehicle</field>
-  <field name="res_model">rental.vehicle</field>
-  <field name="view_mode">list, form</field>
-  <field name="domain">[]</field>
-  <field name="context">{}</field>
-  <field name="help" type="html">
-    
-  </field>
-</record>
-
-<menuitem
-  id="rental_vehicle_root_menu"
-  name="rental_vehicle"
-  sequence="10"/>
-
-  <menuitem
-      id="rental_vehicle_menu"
-      name="Rental Vehicle"
-      parent="rental_vehicle_root_menu"
-  />
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="nti_vehicle_rental.action_window">
-                 <field name="name">nti_vehicle_rental window</field>
-      <field name="res_model">nti_vehicle_rental.nti_vehicle_rental</field>
-      <field name="view_mode">list,form</field>
+    <!-- Form View Rental Vehicle -->
+    <record id="rental_vehicle_view_form" model="ir.ui.view">
+        <field name="name">rental.vehicle.view.form</field>
+        <field name="model">rental.vehicle</field>
+        <field name="arch" type="xml">
+            <form string="Rental Vehicle">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="license_plate"/>
+                            <field name="vehicle_type"/>
+                            <field name="brand"/>
+                        </group>
+                        <group>
+                            <field name="model_year"/>
+                            <field name="seat_count"/>
+                            <field name="daily_rate"/>
+                            <field name="state"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
     </record>
--->
 
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="nti_vehicle_rental.action_server">
-      <field name="name">nti_vehicle_rental server</field>
-      <field name="model_id" ref="model_nti_vehicle_rental_nti_vehicle_rental"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "list,form",
-          "res_model": model._name,
-        }
-      </field>
+    <!-- List View Rental Vehicle -->
+    <record id="rental_vehicle_view_list" model="ir.ui.view">
+        <field name="name">rental.vehicle.view.list</field>
+        <field name="model">rental.vehicle</field>
+        <field name="arch" type="xml">
+            <list string="Rental Vehicles">
+                <field name="name"/>
+                <field name="license_plate"/>
+                <field name="vehicle_type"/>
+                <field name="daily_rate"/>
+                <field name="state"/>
+            </list>
+        </field>
     </record>
--->
 
-    <!-- Top menu item -->
-<!--
-    <menuitem name="nti_vehicle_rental" id="nti_vehicle_rental.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="nti_vehicle_rental.menu_1" parent="nti_vehicle_rental.menu_root"/>
-    <menuitem name="Menu 2" id="nti_vehicle_rental.menu_2" parent="nti_vehicle_rental.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="nti_vehicle_rental.menu_1_list" parent="nti_vehicle_rental.menu_1"
-              action="nti_vehicle_rental.action_window"/>
-    <menuitem name="Server to list" id="nti_vehicle_rental" parent="nti_vehicle_rental.menu_2"
-              action="nti_vehicle_rental.action_server"/>
--->
-  </data>
+    <!-- Action Rental Vehicle -->
+    <record id="rental_vehicle_action" model="ir.actions.act_window">
+        <field name="name">Rental Vehicle</field>
+        <field name="res_model">rental.vehicle</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Root Menu -->
+    <menuitem
+        id="rental_vehicle_root_menu"
+        name="Rental Kendaraan"
+        sequence="10"/>
+
+    <!-- Sub Menu -->
+    <menuitem
+        id="rental_vehicle_menu"
+        name="Rental Vehicle"
+        parent="rental_vehicle_root_menu"
+        action="rental_vehicle_action"
+        sequence="10"/>
+
 </odoo>

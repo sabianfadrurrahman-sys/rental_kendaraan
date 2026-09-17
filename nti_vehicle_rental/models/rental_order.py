@@ -1,4 +1,6 @@
+# -*- coding: utf-8 -*-
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError, UserError
 
 class RentalOrder(models.Model):
     _name = 'rental.order'
@@ -22,8 +24,9 @@ class RentalOrder(models.Model):
         ('confirmed', 'Confirmed'),
         ('ongoing', 'Ongoing'),
         ('returned', 'Returned'),
-        ('cancel', 'Cancelled')
+        ('cancel', 'Cancelled'),
     ], string='Status', default='draft', tracking=True, copy=False)
+    
     user_id = fields.Many2one('res.users', string='Responsible', default=lambda self: self.env.user)
     company_id = fields.Many2one('res.company', string='Company', default=lambda self: self.env.company)
     currency_id = fields.Many2one('res.currency', string='Currency', related='company_id.currency_id', readonly=True)
@@ -41,7 +44,20 @@ class RentalOrder(models.Model):
             else:
                 record.duration_days = 0
 
-    @api.depends('duration_days', 'daily_rate')
+    @api.depends('duration_days', 'vehicle_id.daily_rate')
     def _compute_amount_total(self):
         for record in self:
-            record.amount_total = record.duration_days * record.daily_rate
+            record.amount_total = record.duration_days * (record.daily_rate or 0.0)
+
+    @api.constrains('date_start', 'date_end')
+    def _check_dates(self):
+        for record in self:
+            if record.date_start and record.date_end and record.date_end < record.date_start:
+                raise ValidationError("Tanggal Selesai (End Date) tidak boleh lebih awal dari Tanggal Mulai (Start Date).")
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('name', 'New') == 'New':
+                vals['name'] = self.env['ir.sequence'].next_by_code('rental.order') or 'New'
+        return super().create(vals_list)
