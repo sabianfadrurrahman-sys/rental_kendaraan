@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_nti_vehicle_rental_nti_vehicle_rental,nti_vehicle_rental.nti_vehicle_rental,model_rental_vehicle,base.group_user,1,1,1,1
+access_rental_order,access_rental_order,model_rental_order,base.group_user,1,1,1,1
