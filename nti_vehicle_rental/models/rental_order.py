@@ -32,6 +32,9 @@ class RentalOrder(models.Model):
     currency_id = fields.Many2one('res.currency', string='Currency', related='company_id.currency_id', readonly=True)
     note = fields.Text(string='Note')
 
+
+    # Test Commit
+
     @api.depends('date_start', 'date_end')
     def _compute_duration(self):
         for record in self:
